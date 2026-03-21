@@ -3,9 +3,9 @@ spring:
     name: resume-service
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://caboose.proxy.rlwy.net:36727/railway}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/aicareer}
     username: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:ZUsDxUh0BpuZKUqwJjuoKFlIxaPazqRE}
+    password: ${SPRING_DATASOURCE_PASSWORD:saurabh}
 
   jpa:
     hibernate:
@@ -14,20 +14,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
   security:
     oauth2:
       client:
         registration:
           github:
-            client-id: 
-            client-secret: 
+            client-id: ${GITHUB_CLIENT_ID:}
+            client-secret: ${GITHUB_CLIENT_SECRET:}
             scope:
               - read:user
               - user:email
 
 server:
-  port: ${SERVER_PORT:8081}
+  port: ${PORT:8080}
 
 eureka:
   client:
@@ -35,7 +36,7 @@ eureka:
 
 groq:
   api:
-    key: 
+    key: ${GROQ_API_KEY:}
 
 rapidapi:
-  key: 
+  key: ${RAPIDAPI_KEY:}
